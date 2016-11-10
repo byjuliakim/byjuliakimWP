@@ -41,6 +41,14 @@ function theme_setup() {
 }
 endif;
 
+//Showing other pages on the homepage
+function show_page($path)
+{
+    $page = get_page_by_path($path);
+    $content = apply_filters('the_content', $page->post_content);
+    echo $content;
+}
+
 add_action( 'after_setup_theme', 'theme_setup' );
 
 /* Add all our CSS files here.

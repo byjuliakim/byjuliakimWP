@@ -6,6 +6,8 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?php  wp_title('|', true, 'right'); ?></title>
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
+  <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
+  <link href="https://fonts.googleapis.com/css?family=Fugaz+One|Montserrat" rel="stylesheet">
   <!-- stylesheets should be enqueued in functions.php -->
   <?php wp_head(); ?>
 </head>

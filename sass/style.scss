@@ -7,8 +7,10 @@
 * Author URI: http://hackeryou.com
 */
 
+
 @import 'normalize';
 @import 'typography';
+@import 'variables';
 @import 'navigation';
 @import 'sidebar';
 @import 'comments';
@@ -18,13 +20,64 @@
 Default Styling
 ====================================
 */
+flex-center{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
+ul{
+	margin:0;
+	padding:0;
 
+	li{
+		list-style:none;
+		display:inline-block;
+	}
+	a{
+		@extend flex-center;
+		border-radius:50%;
+		width:30px;
+		height:30px;
+		font-size:20px;
+		i{
+			color:white;
+		}
+	}
+}
+a{
+	text-decoration:none;
+	position:relative;
+	&:visited{
+		color:white;
+	}
+	&:before{
+		position: absolute;
+	    content: '';
+	    width: 0px;
+	    height: 1.5px;
+	    transition: all .5s ease;
+	    top: 1.5rem;
+	    right:50%;
+	    transform:tranlateX(-50%);
+	}
+	&:hover:before{
+		position: absolute;
+	    content: '';
+	    right:0;
+	    transform:none;
+	    width: 100%;
+	    background-color: $pink;
+	    color:white;
+	}
+}
 img {
 	max-width: 100%;
 }
 
 body {
-	color: #333;
+	background:black;
+	color:white;
+	font-family: 'Montserrat', sans-serif;
 }
 
 .container {
@@ -33,19 +86,229 @@ body {
 }
 
 .content {
-	float: left;
-	width: 65%;
-	margin-right: 5%;
+	width: 80%;
+	margin: 0 auto;
 }
 
 .full {
 	width: 100%;
 }
+h1{
+	font-family: 'Fugaz One', cursive;
+	margin-bottom:1rem;
+	margin-top:1.4rem;
+}
+h2{
+	font-family: 'Fugaz One', cursive;
+	margin:0;
+	display:inline-block;
+}
+p{
+	color:$txtgray;
+}
+.box{
+	background: $boxbg;
+	display:flex;
+	margin-bottom:20px;
+	box-shadow: -5px -5px 5px $border;
+}
+.label{
+	position:absolute;
+	//right: 10%;
+	h2{
+		margin:0;
+		padding: 0 20px;
+	}
+	@extend flex-center;
+	.iconBox{
+		@extend flex-center;
+		padding:5px;
+		.icon{
+			@extend flex-center;
+			border-radius:50%;
+			border: 5px solid white;
+			height:40px;
+			width:40px;
+			i{
+				font-size:15px;
+			}
+		}
+	}
+}
+.contentBox{
+	padding:50px;
+	display:flex;
+	flex-wrap:wrap;
+	justify-content:space-around;
+}
+.profile{
+	.me{
+		width:30%;
+		h2{
+			color:$txtgray;
+			font-size:1.4rem;
+			font-family: 'Montserrat', sans-serif;
+		}
+		img{
+			border-radius:50%;
+			margin:15px 0;
+		}
+	}
+	.aboutMe{
+		width:65%;
+		margin-left:30px;
+	}
+	.skills{
+		width:100%;
+		display:flex;
+		flex-wrap:wrap;
+		margin-top:30px;
+		p{
+			display:inline;
+			font-weight:bold;
+			text-align:center;
+			margin: 0.9rem 0;
+		}
+		h1{
+			width:100%;
+			text-align:center;
+		}
+		.skillContainer{
+			display:flex;
+			flex-wrap:wrap;
+			justify-content: space-between;
+			width:100%;
+		}
+		.eachSkill{
+			width:15%;
+			@extend flex-center;
+			flex-direction:column;
+			p{
+				font-size:0.9rem;
+				font-weight:normal;
+			}
+			i{
+				font-size: 50px;
+				transition:1s;
+				&:hover{
+					transform:rotateY(360deg);
+				}
+			}
+		}
+	}
+}
 
+.resume{
+}
 
+.portfolio{
+	.eachProject{
+		display:flex;
+		flex-wrap:wrap;
+		justify-content:space-around;
+		align-items:flex-start;
+		width:100%;
+		margin-top: 20px;
+		padding:20px;
+		img{
+			width:40%;
+			object-fit:contain;
+		}
+		h2{
+			width:100%;
+		}
+		.text{
+			width:55%;
+		}
+	}
 
+}
 
-
+.contact{
+	h1{
+		text-align:center;
+		width:100%;
+	}
+	.contentBox{
+		display:flex;
+		justify-content:space-around;
+		flex-direction:row;
+		width:100%;
+	}
+	.left{
+		width:50%;
+	}
+	form{
+		display:flex;
+		flex-direction:column;
+		justify-content:flex-start;
+		p{
+			border: 2px solid $blue;
+			display:flex;
+			justify-content:space-between;
+			margin:5px;
+		}
+		label{	
+			width:22%;
+			padding-left:8px;
+			padding-top:3px;
+		}
+		span{
+			border:none;
+			height:100%;
+			margin-left:5px;
+			padding:0;
+			background:none;
+		}
+		input, textarea{
+			width:1%;
+			background: $boxbg;
+			border:none;
+			padding:4px;
+			transition: .5s;
+			resize: none;
+			&:focus{
+				outline:none;
+			}
+		}
+		input[type=submit]{
+			border: 2px solid $blue;
+			color:white;  
+			width:100%;
+			margin:0;
+			padding:5px 0;
+			background:$blue;
+		}
+		img{
+			display:none;
+		}
+	}
+	.right{
+		display:flex;
+		flex-direction:column;
+		width:35%;
+		.bold{
+			margin-top:0;
+		}
+		.contactInfo{
+			margin-top:2px;
+			margin-bottom:20px;
+			display:flex;
+			align-items:center;
+			p{
+				margin:0;
+				display:inline-block;
+			}
+			i{
+				margin-right:10px;
+			}
+			.fa-mobile{
+				font-size:30px;
+				width:16px;
+			}
+		}
+	}
+}
 
 
 
