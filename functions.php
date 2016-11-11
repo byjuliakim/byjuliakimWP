@@ -41,6 +41,8 @@ function theme_setup() {
 }
 endif;
 
+
+
 //Showing other pages on the homepage
 function show_page($path)
 {
@@ -247,6 +249,28 @@ function hackeryou_posted_in() {
 	);
 }
 endif;
+
+function static_front_posts(){
+if (is_front_page()) {
+?>
+<div id="my-static-front-posts">
+<?php
+$custom_loop = new WP_Query('showposts=10&orderby=date');
+if ( $custom_loop->have_posts() ) :
+while ( $custom_loop->have_posts() ) : $custom_loop->the_post();
+echo '<div class="post type-post hentry post_box top">';
+echo '<div class="headline_area"><h2 class="entry-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
+echo '<div class="format_text entry-content"><p>' . get_the_excerpt() . '</p></div>';
+echo '<p class="headline_meta"><abbr title="" class="published">' . get_the_date() . '</abbr></p></div>';
+echo '<a href="' . get_permalink() . '">' . '<span class="more-button">Read More</span></a>';
+echo '</div>';
+endwhile;
+wp_reset_query();
+endif;
+?></div><?php
+ }
+ }
+add_action('thesis_hook_after_content','static_front_posts');
 
 /* Get rid of junk! - Gets rid of all the crap in the header that you dont need */
 

@@ -8,6 +8,24 @@
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
   <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css?family=Fugaz+One|Montserrat" rel="stylesheet">
+  <style>
+    .profile .label:after{
+      border-color: transparent transparent transparent <?php the_field('profile_color')?>;
+    }
+    .resume .label:after{
+     border-color: transparent transparent transparent <?php the_field('resume_color')?>; 
+    }
+    .portfolio .label:after{
+      border-color: transparent transparent transparent <?php the_field('port_color')?>;
+    }
+    .blog .label:after{
+      border-color: transparent transparent transparent <?php the_field('blog_color')?>;
+    }
+    .contact .label:after{
+      border-color: transparent transparent transparent <?php the_field('contact_color')?>;
+    }
+
+  </style>
   <!-- stylesheets should be enqueued in functions.php -->
   <?php wp_head(); ?>
 </head>
@@ -19,14 +37,9 @@
   <div class="container">
     <h1>
       <a href="<?php echo home_url( '/' ); ?>" title="<?php bloginfo( 'name', 'display' ); ?>" rel="home">
-        <?php bloginfo( 'name' ); ?>
+        by Julia Kim
       </a>
     </h1>
-
-    <?php wp_nav_menu( array(
-      'container' => false,
-      'theme_location' => 'primary'
-    )); ?>
   </div> <!-- /.container -->
 </header><!--/.header-->
 
