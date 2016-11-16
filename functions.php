@@ -149,7 +149,7 @@ add_filter( 'excerpt_length', 'hackeryou_excerpt_length' );
  * Returns a "Continue Reading" link for excerpts
  */
 function hackeryou_continue_reading_link() {
-	return ' <a href="'. get_permalink() . '">Continue reading <span class="meta-nav">&rarr;</span></a>';
+	return ' <a href="'. get_permalink() . '">Continue Reading</a>';
 }
 
 /**
@@ -233,9 +233,9 @@ function hackeryou_posted_in() {
 	// Retrieves tag list of current post, separated by commas.
 	$tag_list = get_the_tag_list( '', ', ' );
 	if ( $tag_list ) {
-		$posted_in = 'This entry was posted in %1$s and tagged %2$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.';
+		$posted_in = 'Category: %1$s</br> Tags: %2$s.';
 	} elseif ( is_object_in_taxonomy( get_post_type(), 'category' ) ) {
-		$posted_in = 'This entry was posted in %1$s. Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.';
+		$posted_in = 'Category: %1$s.';
 	} else {
 		$posted_in = 'Bookmark the <a href="%3$s" title="Permalink to %4$s" rel="bookmark">permalink</a>.';
 	}
@@ -261,8 +261,7 @@ while ( $custom_loop->have_posts() ) : $custom_loop->the_post();
 echo '<div class="post type-post hentry post_box top">';
 echo '<div class="headline_area"><h2 class="entry-title"><a href="' . get_permalink() . '">' . get_the_title() . '</a></h2>';
 echo '<div class="format_text entry-content"><p>' . get_the_excerpt() . '</p></div>';
-echo '<p class="headline_meta"><abbr title="" class="published">' . get_the_date() . '</abbr></p></div>';
-echo '<a href="' . get_permalink() . '">' . '<span class="more-button">Read More</span></a>';
+echo '<p class="headline_meta">Posted on <abbr title="" class="published">' . get_the_date() . '</abbr></p></div>';
 echo '</div>';
 endwhile;
 wp_reset_query();

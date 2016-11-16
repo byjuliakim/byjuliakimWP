@@ -1,10 +1,8 @@
 /*!
-* Theme Name: HackerYou Starter Theme
-* Theme URI: http://hackeryou.com;
-* Description: Starter theme for building any website. Created by HackerYou. * Rename this to your own theme page.
+* Theme Name: by Julia Kim Theme
+* Theme URI: http:/byjuliakim.com;
+* Description: Personal website theme. * 
 * Version: 1.0
-* Author: HackerYou
-* Author URI: http://hackeryou.com
 */
 
 
@@ -29,8 +27,9 @@ flex-center{
 a{
 	text-decoration:none;
 	position:relative;
+	color:white;
 	&:visited{
-		color:white;
+		color:inherit;
 	}
 	&:before{
 		position: absolute;
@@ -57,6 +56,7 @@ img {
 
 body {
 	background:black;
+	background:url('images/bg.jpg');
 	color:white;
 	font-family: 'Montserrat', sans-serif;
 }
@@ -78,6 +78,7 @@ h1{
 	font-family: 'Fugaz One', cursive;
 	margin-bottom:1.7rem;
 	margin-top:0;
+	font-size: 2.5rem;
 }
 h2{
 	font-family: 'Fugaz One', cursive;
@@ -95,6 +96,9 @@ p{
 	li{
 		list-style:none;
 		display:inline-block;
+		&:hover a{
+			transform:rotateY(360deg);
+		}
 	}
 	a{
 		@extend flex-center;
@@ -103,15 +107,12 @@ p{
 		height:30px;
 		font-size:20px;
 		margin-right:12px;
+		transition:.5s;
 		i{
 			color:white;
 		}
 		&:hover:before{
 			width: 0;
-		}
-		transition:.5s;
-		&:hover{
-			transform:rotateY(360deg);
 		}
 	}
 }
@@ -129,20 +130,43 @@ p{
 	box-shadow: -8px -8px 8px $border;
 	flex-direction: column;
 }
+.blink {
+	opacity:0;
+	font-size:1.5rem;
+	color:$pgray;
+	margin-left:280px;
+	i{
+		margin-right:40px;
+	}
+}
+@keyframes blinker {  
+ 	50% { opacity: 1; color:white; }
+}
+@keyframes left {
+	50% { transform: translateX(-70%); }
+}
 .labelBox{
 	width:100%;
 	position:relative;
 	background: $boxbg;
 	height:56px;
+	display:flex;
+	align-items:center;
+}
+.blinkToggle{
+	&:hover .blink{
+		animation: blinker 1s linear infinite;
+	}
 }
 
 .label{
 	position:absolute;
 	transition: .8s;
-	left:0;
 	width: 202px;
 	display: flex;
     justify-content: flex-start;
+    cursor:pointer;
+    left:0;
 	h2{
 		margin:0;
 		padding: 0 20px;
@@ -162,25 +186,17 @@ p{
 			}
 		}
 	}
-	&:before{
-		border-width: 0;
-	}
-	&:after{
-		content:'';
-		position:absolute;
-		left:calc(100% + 3px);
-		width: 0;
-		height: 0;
-		border-style: solid;
-		border-width: 28px 0 28px 12px;
-	}
 }
-
+.triangle{
+	position:absolute;
+	left:calc(100% + 3px);
+}
 .labelToggle{
 	transition:.8s;
 	left:100%;
-	transform: translateX(-100%)
+	transform: translateX(-100%);
 }
+
 .after{
 	&:before{
 		border-width: 0;
@@ -211,41 +227,102 @@ p{
 		border-width: 28px 12px 28px 0;
 	}
 }
+.close{
+	margin-bottom:0;
+	margin-top:1.4rem;
+	display:flex;
+	justify-content:flex-end;
+	align-items:center;
+	position:relative;
+	p{
+		color:white;
+		font-size:20px;	
+		position:absolute;
+	    bottom: 18px;
+	    right: 25px;
+		transition:.5s;
+		margin:0;
+		cursor:pointer;
+		i{
+			margin-left:5px;
+			transition:.3s;
+			transform:rotate(90deg);
+		}
+		&:hover{
+			bottom:30px;
+		}
+		&:before{
+			position: absolute;
+		    content: '';
+		    width: 0px;
+		    height: 2px;
+		    transition: all .5s ease;
+		    top: 1.8rem;
+		    right:50%;
+		    transform:tranlateX(-50%);
+		}
+		&:hover:before{
+			position: absolute;
+		    content: '';
+		    right:0;
+		    transform:none;
+		    width: 100%;
+		    background-color: $blue;
+		}
+		&:hover i{
+			transform:rotate(0deg);
+		}
+	}
+}
+
+.boxbox{
+	display:none;
+}
 .contentBox{
+	display:flex;
 	padding:50px;
 	padding-top:15px;
-	display:flex;
 	flex-wrap:wrap;
 	justify-content:space-around;
 	flex-direction:column;
-	display:none;
+	visibility:visible;
+	//display:none;
 }
 .profile{
 	.me{
 		display:flex;
+		flex-wrap:wrap;
+		align-items:center;
 		justify-content:space-around;
+		h1{
+			text-align:center;
+			width:100%;
+			span{
+				white-space:nowrap;
+			}
+			// margin:0;
+		}
+		img{
+			margin-bottom:40px;
+		}
 	}
-	.infoMe{
-		width:30%;
+	.aboutMe{
+		width:65%;
+		display:flex;
+		justify-content:space-around;
+		flex-direction:column;
+		margin-left:30px;
 		h2{
 			color:$txtgray;
 			font-size:1.4rem;
 			font-family: 'Montserrat', sans-serif;
 		}
-		img{
-			border-radius:50%;
-			margin:15px 0;
-		}
-	}
-	.aboutMe{
-		width:65%;
-		margin-left:30px;
 	}
 	.skills{
 		width:100%;
 		display:flex;
 		flex-wrap:wrap;
-		// margin-top:30px;
+		margin-bottom:20px;
 		p{
 			display:inline;
 			font-weight:bold;
@@ -260,13 +337,16 @@ p{
 		.skillContainer{
 			display:flex;
 			flex-wrap:wrap;
-			justify-content: space-between;
+			justify-content: space-around;
 			width:100%;
 		}
 		.eachSkill{
 			width:15%;
 			@extend flex-center;
 			flex-direction:column;
+			&:hover i{
+					transform:rotateY(360deg);
+			}
 			p{
 				font-size:0.9rem;
 				font-weight:normal;
@@ -275,9 +355,6 @@ p{
 				font-size: 50px;
 				transition:1s;
 				color: $pgray;
-				&:hover{
-					transform:rotateY(360deg);
-				}
 			}
 		}
 	}
@@ -293,18 +370,17 @@ p{
 	h1{
 		text-align:center;
 	}
-	img{
-	}
 	.eachProject{
+		border-radius:2px;
 		display:flex;
 		flex-wrap:wrap;
 		justify-content:space-between;
 		align-items:center;
 		width:100%;
-		margin-top: 20px;
+		margin-bottom: 40px;
 		padding:20px;
 		img{
-			width:42%;
+			width:40%;
 			height:220px;
 			object-fit:cover;
 		}
@@ -319,13 +395,14 @@ p{
 		.categories{
 			color:white;
 			font-size:.8rem;
+			margin:0;
 		}
 		.text{
 			width:55%;
 			display:flex;
 			flex-direction:column;
 			justify-content:center;
-			margin-left:25px;
+			margin-right:30px;
 		}
 		.buttons{
 			margin-top:1rem;
@@ -339,17 +416,12 @@ p{
 				padding:5px 10px;
 				margin-right:20px;
 				transition:.5s;
+				&:last-child{
+					margin-right:0;
+				}
 				i{
 					font-size:1.5rem;
 				}
-				// &:before{
-				// 	height:100%;
-				// 	background: white;
-				// 	top:0;
-				// 	left:0;
-				// 	transform:none;
-				// 	z-index:-1;
-				// }
 				&:hover:before{
 					width:0%;
 					
@@ -362,8 +434,9 @@ p{
 	}
 	.eachProject:nth-child(odd){
 		flex-direction:row-reverse;
-		img{
-			//box-shadow:5px -5px 5px $border;
+		.text{
+			margin-left:30px;
+			margin-right:0;
 		}
 	}
 
@@ -379,7 +452,9 @@ p{
 		display:flex;
 		justify-content:space-around;
 		flex-direction:row;
+		flex-wrap:wrap;
 		width:100%;
+		margin-bottom:30px;
 	}
 	.right{
 		width:50%;
@@ -397,6 +472,7 @@ p{
 		label{	
 			padding-left:8px;
 			padding-top:3px;
+			border-radius:2px;
 		}
 		span{
 			border:none;
@@ -404,21 +480,23 @@ p{
 			margin-left:5px;
 			padding:0;
 			background:none;
-			width: 75%;
+			width: 78%;
 		}
 		input, textarea{
-			width:1%;
+			width:0%;
 			background: $boxbg;
 			border:none;
 			padding:4px;
 			transition: .5s;
 			resize: none;
+			border-radius:0;
 			&:focus{
 				outline:none;
 			}
 		}
 		input[type=submit]{
 			border: 2px solid $blue;
+			border-radius:0;
 			color:white;  
 			width:100%;
 			margin:0;
@@ -456,6 +534,193 @@ p{
 		}
 	}
 }
+header{
+	text-align:center;
+	h1{
+		margin-top:4rem;
+	}
+	a{
+		animation:colorchange 10s infinite alternate;
+		font-size:6rem;
+		text-align:center;
+		color:$pink;
+		&:before{
+			top:7rem;
+			height:5px;
+		}
+		&:hover:before{
+			animation:bgchange 10s infinite alternate;
+		}
+	}
+}
+
+.blog{
+	color:$boxbg;
+	abbr[title] {
+		border:none;
+	}
+	.entry-meta, .headline_meta, .logged-in-as{
+		font-size:.9rem;
+		font-style:italic;
+	}
+	.entry-meta{
+		text-align:right;
+		margin-bottom:2rem;
+	}
+	.entry-utility{
+		font-size:.9rem;
+	}
+	.headline_meta{
+		margin-bottom:0;
+		color:$yellow;
+	}
+	#reply-title{
+		font-family: 'Fugaz One', cursive;
+		color:$boxbg;
+		font-size:1.5rem;
+		margin-bottom:0.5rem;
+	}
+	#respond dd, #respond dt, #respond label{
+		color:$boxbg;
+	}
+	#comment{
+		//comment textarea
+		resize:none;
+		border-radius:2px;
+		border:none;
+		width:100%;
+	}
+	#respond input{
+		background: white;
+		width:100%;
+		border:none;
+		border-radius:2px;
+	}
+	#respond .required{
+		color:$pink;
+	}
+	#respond .form-submit input{
+		//comment submit button
+		background: $yellow;
+		width:100%;
+		margin-top:20px;
+		padding: 5px 0;
+		transition:.3s;
+		&:hover{
+			color:$pink
+		}
+	}
+	.comment-list{
+		background: white;
+		border-radius:2px;
+		color:$boxbg;
+		a{
+			color:$pink;
+			&:hover{
+				color:$txtgray;
+			}
+		}
+	}
+	h1{
+		color:white;
+		text-align:center;
+		span{
+			white-space:nowrap;
+		}
+	}
+	h2{
+		a{
+			color:$boxbg;
+			border:none;
+			&:before{
+				top:2rem;
+				transform:tranlateX(0%);
+				left:0;
+			}
+			&:hover:before{
+				width:100%;
+				background: $yellow;
+			}&:hover{
+				color:white;;
+			}
+		}
+	}
+	p{
+		color:$boxbg;
+	}
+	a{
+		color:white;
+		transition:.3s;
+		border-bottom: 1px dotted;
+			&:hover{
+				color:$yellow;
+			}
+			&:hover:before{
+				width:0;
+			}
+	}
+	.post{
+		width:100%;
+		background: $blue;
+		margin-bottom:40px;
+		padding:30px;
+		border-radius:2px;
+	}
+	.container{
+		width:80%;
+		display:flex;
+		justify-content:space-around;
+		background: $blue;
+		padding: 50px 0;
+		border-radius:2px;
+		box-shadow: -8px -8px 8px darken($blue,25);
+		h1{
+			font-size:3rem;
+			margin-bottom:1rem;
+			color: $boxbg;
+		}
+		h3{
+			margin-bottom:.5rem;
+			margin-top:2rem;
+			color:white;
+		}
+		.post{
+			margin-bottom:0;
+		}
+	}
+	.content{
+		width:80%;
+		margin:0;
+	}
+	.sidebar{
+		width:20%;
+		margin-top:100px;
+		background: $mint;
+	}
+	.tip{
+		color:$pink;
+	}
+	#nav-below{
+		display:flex;
+		justify-content:space-between;
+		p{
+			display:inline-block;
+		}
+	}
+	.close p{
+		color:white;
+	}
+}
+pre{
+	background: $boxbg;
+	color:white;
+	border-radius: 2px;
+	padding:10px;
+}
+pre.white{
+	background:white;
+	color:$boxbg;
+}
 
 @media(max-width:1000px){
 	.contact{
@@ -466,26 +731,51 @@ p{
 		}
 	}
 }
-
-@media(max-width:775px){
+@media(max-width:930px){
 	.profile{
-		.me{
-			flex-direction:column;
-		}
-		.infoMe{
-			width:100%;
-			display:flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-		}
 		.aboutMe{
-			h1{
-				text-align:center;
-			}
 			width:100%;
 			margin:0;
 		}
+	}
+}
+@media(max-width:900px){
+	.portfolio{
+		.eachProject{
+			h2{
+				text-align:center;
+				font-size:2.5rem;
+				margin-top:1.5rem;
+			}
+			img{
+				width: 100%;
+				height: 342px;
+			}
+			.text{
+				align-items:center;
+				width:100%;
+				margin-left:0;
+				margin-right:0;
+				text-align:center;
+				margin-bottom:20px;
+				p{
+					margin: auto 20px;
+				}
+			}
+		}
+		.eachProject:nth-child(odd){
+			.text{
+				margin-left:0;
+			}
+		}
+	}
+}
+
+@media(max-width:775px){
+	.triangle{
+		top:-2px;
+	}
+	.profile{
 		.skills{
 			.eachSkill{
 				width:25%;
@@ -509,6 +799,77 @@ p{
 			}
 		}
 	}
+	.blog{
+		h2{
+			a{
+				color:white;
+				&:before{
+					background: $yellow;
+					width:100%;
+				}
+			}
+		}
+	}
+}
+
+@media(max-width:650px){
+	.portfolio .eachProject img{
+	    height: 245px;
+	}
+	header{
+		a{
+			font-size:5rem;
+		}
+	}	
+	.profile .close p, .resume .close p, .blogFront .close p, .portfolio .close p, .contact .close p,{
+		&:hover{
+			bottom:18px;
+		}
+		&:hover:before{
+			width:0;
+		}
+	}
+	a{
+		&:hover:before{
+			width:0;
+		}
+	}
+	.blog .container{
+		width:85%;
+		padding: 20px 0;
+		h1{
+			font-size:2.5rem;
+		}
+		.content{
+			width:100%;
+			padding:20px;
+			.post{
+				padding:20px;
+			}
+		}
+	}
+	.portfolio .eachProject {
+		.buttons{
+			flex-wrap:wrap;
+			justify-content:center;
+			a{
+				margin:0;
+				margin-bottom:10px;
+				width:80%;
+				height:40px;
+				color:white;
+				border:3px solid white;
+				background:$boxbg;
+				&:last-child{
+					margin:0;
+				}
+				&:hover{
+					background:$boxbg;
+				}
+			}
+		}
+	}
+
 }
 
 @media(max-width:575px){
@@ -519,17 +880,32 @@ p{
 		padding:20px;
 		padding-top:50px;
 	}
+	.aboutMe{
+		padding:20px;
+	}
+	header{
+		a{
+			font-size:4.5rem;
+			&:before{
+				top:6rem;
+			}
+		}
+	}
+	.blog .container .content .post{
+		padding:20px
+	}
 }
 
 @media(max-width:450px){
 	.profile{
-		.infoMe{
+		.aboutMe{
 			h2{
 				font-size:1.2rem;
 				text-align:center;
 			}
 		}
 		.skills{
+
 			.eachSkill{
 				width:33%;
 				p{
@@ -545,28 +921,34 @@ p{
 			}
 		}
 	}
-
-}
-
-header{
-	text-align:center;
-	h1{
-		margin-top:4rem;
+	.portfolio .eachProject img{
+		height: 176px;
 	}
-	a{
-		animation:colorchange 10s infinite alternate;
-		font-size:6rem;
-		text-align:center;
-		color:$pink;
-		&:before{
-			top:7rem;
-			height:5px;
+	header{
+		h1{
+			margin-top:2.5rem;
 		}
-		&:hover:before{
-			animation:bgchange 10s infinite alternate;
+		a{
+			font-size:3rem;
+			&:before{
+				top:5rem;
+			}
 		}
 	}
+	.blog{
+		h1{
+			span{
+				white-space:normal;
+			}
+		}
+	}
+	.blogFront{
+		.post h2 a{
+			font-size:1.3rem;
+		}
+	}
 }
+
 
 @keyframes colorchange {
   0% { 
@@ -585,7 +967,7 @@ header{
     color: $blue;
   }
   100%{
-  	color: $pgray;
+  	color: white;
   }
 }
 @keyframes bgchange {
@@ -605,11 +987,109 @@ header{
     background: $blue;
   }
   100%{
-  	background: $pgray;
+  	background: white;
   }
 }
-.show{
-	display:inherit;
-	height:100%;
-	transition: 1s;
+article{
+	border-bottom: 4px solid white;
+	margin-top:50px;
+	h2{
+		a{
+			font-size:2.5rem;
+			transition:.5s;
+			&:before{
+				top:3.5rem;
+				transform:tranlateX(0%);
+				left:0;
+				height:3.5px;
+			}
+			&:hover:before{
+				background: $yellow;
+			}
+		}
+	}
+	p{
+		a{
+		color:white;
+		transition:.5s;
+		border-bottom: 1px dotted;
+			&:visited{
+				color:white;
+			}
+			&:hover{
+				color:$yellow;
+			}
+			&:hover:before{
+				width:0;
+			}
+
+		}
+	}
+	footer{
+		p{
+			text-align:left;
+			color:$yellow;
+		 	a{
+				color:white;
+				border-bottom: 1px dotted;
+				animation:none;
+				transition:.3s;
+				&:visited{
+					color:white;
+				}
+				&:hover{
+					color:$pink;
+				}
+				&:hover:before{
+					width:0;
+				}
+			}
+		}
+	}
+
+}
+.tag, .author, .category{
+	.content h1{
+		a{
+			&:before{
+				top:3rem;
+			}
+			&:hover:before{
+				animation:bgchange 10s infinite alternate;
+			}
+			&:hover{
+				color:$pink;
+			}
+		}
+	}
+}
+
+.page404{
+	.container{
+		width:80%;
+	}
+	h1{
+		position: relative;
+		display:inline-block;
+		&:before{
+			content:"";
+			position: absolute;
+			width:100%;
+			background: $pink;
+			height:3px;
+			top:3.3rem;
+		}
+	}
+	input[type=search]{
+		border:solid 2px $blue;
+		background: transparent;
+		padding: 5px;
+	}
+	input[type=submit]{
+		background: $blue;
+		border: none;
+		padding: 7px 10px;
+		color:white;
+		margin-left:0;
+	}
 }

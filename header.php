@@ -8,21 +8,23 @@
   <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
   <link href='//cdn.jsdelivr.net/devicons/1.8.0/css/devicons.min.css' rel='stylesheet'>
   <link href="https://fonts.googleapis.com/css?family=Fugaz+One|Montserrat" rel="stylesheet">
+  <?php $favicon = get_field('favicon', 'options') ?>
+  <link rel="shortcut icon" href="<?php echo $favicon['url']?>"/>
   <style>
-    .profile .label:after{
-      border-color: transparent transparent transparent <?php the_field('profile_color')?>;
+    .profile .close p:hover:before{
+      background: <?php the_field('profile_color')?>;
     }
-    .resume .label:after{
-     border-color: transparent transparent transparent <?php the_field('resume_color')?>; 
+    .resume .close p:hover:before{
+      background: <?php the_field('resume_color')?>;
     }
-    .portfolio .label:after{
-      border-color: transparent transparent transparent <?php the_field('port_color')?>;
+    .portfolio .close p:hover:before{
+      background: <?php the_field('port_color')?>;
     }
-    .blog .label:after{
-      border-color: transparent transparent transparent <?php the_field('blog_color')?>;
+    .blogFront .close p:hover:before{
+      background: <?php the_field('blog_color')?>;
     }
-    .contact .label:after{
-      border-color: transparent transparent transparent <?php the_field('contact_color')?>;
+    .contact .close p:hover:before{
+      background: <?php the_field('contact_color')?>;
     }
 
   </style>

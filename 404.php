@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class="main">
+<div class="main page404">
   <div class="container">
 
     <h1>Not Found</h1>
@@ -11,3 +11,5 @@
 </div> <!-- /.main -->
 
 <?php get_footer(); ?>
+
+  
