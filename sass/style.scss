@@ -55,12 +55,11 @@ img {
 }
 
 body {
-	background:black;
-	background:url('images/bg.jpg');
+
+	background:black, url('images/bg.jpg');
 	color:white;
 	font-family: 'Montserrat', sans-serif;
 }
-
 .container {
 	max-width: 1200px;
 	margin: 0 auto;
@@ -96,9 +95,6 @@ p{
 	li{
 		list-style:none;
 		display:inline-block;
-		&:hover a{
-			transform:rotateY(360deg);
-		}
 	}
 	a{
 		@extend flex-center;
@@ -107,7 +103,6 @@ p{
 		height:30px;
 		font-size:20px;
 		margin-right:12px;
-		transition:.5s;
 		i{
 			color:white;
 		}
@@ -138,6 +133,9 @@ p{
 	i{
 		margin-right:40px;
 	}
+}
+.noShow{
+	display:none;
 }
 @keyframes blinker {  
  	50% { opacity: 1; color:white; }
@@ -304,6 +302,7 @@ p{
 		}
 		img{
 			margin-bottom:40px;
+			width:30%;
 		}
 	}
 	.aboutMe{
@@ -344,8 +343,8 @@ p{
 			width:15%;
 			@extend flex-center;
 			flex-direction:column;
-			&:hover i{
-					transform:rotateY(360deg);
+			.iconBox{
+				transition:.5s;
 			}
 			p{
 				font-size:0.9rem;
@@ -353,7 +352,6 @@ p{
 			}
 			i{
 				font-size: 50px;
-				transition:1s;
 				color: $pgray;
 			}
 		}
@@ -361,6 +359,7 @@ p{
 }
 
 .resume{
+	display:none;
 }
 
 .portfolio{
@@ -556,6 +555,9 @@ header{
 
 .blog{
 	color:$boxbg;
+	#my-static-front-posts{
+		width:100%;
+	}
 	abbr[title] {
 		border:none;
 	}
@@ -813,6 +815,9 @@ pre.white{
 }
 
 @media(max-width:650px){
+	.body{
+		background: black;
+	}
 	.portfolio .eachProject img{
 	    height: 245px;
 	}

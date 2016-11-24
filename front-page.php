@@ -1,6 +1,6 @@
 <?php get_header();  ?>
 
-<div class="main">
+<div class="main front">
   <div class="container">
     <div class="content">
       <ul class="socialTop">
